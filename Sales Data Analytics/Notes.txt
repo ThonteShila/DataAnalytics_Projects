@@ -69,3 +69,20 @@ bar plot
     df["City"]=df['Purchase Address'].str.split(",").str[1]
     df.groupby("City")[ 'Quantity Ordered'].sum().plot(kind="bar")
     df.groupby("City")[ 'Quantity Ordered'].sum().plot(kind="pie", autopct="%1.1f%%")
+
+frequencu count
+    pd.value_counts(df["City"])
+
+#which product sale most?Why?
+    total_order=df.groupby("Product").agg({"Quantity Ordered":sum,"Price Each":"mean"})
+    total_order=total_order.reset_index()
+    products=total_order["Product"].values
+
+#to diplay two columns on y and share single x axis
+    fig,ax1=plt.subplots()
+    ax2=ax1.twinx()
+    sns.barplot(x="Product",y="Quantity Ordered",data=total_order,ax=ax1,color="g")
+    sns.lineplot(x="Product",y="Price Each",data=total_order,ax=ax2)
+    ax1.set_ylabel("Quantity Ordered",color="g")
+    ax1.set_xticklabels(products,rotation=90)
+    ax2.set_ylabel("Price Each",color="b")
