@@ -1,0 +1,25 @@
+Notes.txt
+1.create folder
+2.clone to git
+3.select folder
+4.inside /vscode open folder
+5.create file .ipynb
+6.download dataset and copy in that folder
+7.How to read feather dataset
+
+feather-used extremly large data sets
+    -perform operation fast than sql and csv
+    -stord in binary foramt
+
+import lib
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import numpy as np
+    import plotly.express as px
+
+!pip install pyarrow
+Read data
+    df=pd.read_feather(r"C:\Shila Data\DataAnalytics_Projects\Sales Data Analytics\Sales_data.ftr")
+
+Cleaning datasets:-
