@@ -23,3 +23,44 @@ Read data
     df=pd.read_feather(r"C:\Shila Data\DataAnalytics_Projects\Sales Data Analytics\Sales_data.ftr")
 
 Cleaning datasets:-
+    df.isnull().sum()
+
+    df.dropna(how='all', inplace=True)
+
+    df[df.duplicated()]
+
+    df.drop_duplicates(inplace=True)
+
+date:
+    all_data['date'] = pd.to_datetime(all_data['date'])
+or 
+    df["Order Date"].str.split("/")
+    f["Month"]=df["Order Date"].str.split("/").str[0]  
+if it contain any wrong value
+    df["Month"].astype("int")
+    df["Month"].unique()
+    f=df["Month"]=="Order Date"
+    f.sum()
+    df[~f]
+    df["Month"]=df["Month"].astype("int")
+
+if warning coes:
+    import warnings
+    from warnings import filterwarnings
+    filterwarnings("ignore")    
+
+to check datatypes 
+    df.dtypes()
+    df["Quantity Ordered"]=df["Quantity Ordered"].astype("int")
+    df["Price Each"]=df["Price Each"].astype("float")
+
+Feature engineering:-
+ceating new columns to find insights
+df["sales"]=df["Quantity Ordered"]*df["Price Each"]
+
+#Which is best month for sales
+    best_month=df.groupby("Month")["sales"].sum().idxmax()
+
+bar plot
+    df.groupby("Month")["sales"].sum().plot(kind="bar")
+    plt.ticklabel_format(style="plain", axis="y")   
