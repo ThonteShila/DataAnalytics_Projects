@@ -64,3 +64,8 @@ df["sales"]=df["Quantity Ordered"]*df["Price Each"]
 bar plot
     df.groupby("Month")["sales"].sum().plot(kind="bar")
     plt.ticklabel_format(style="plain", axis="y")   
+
+#which city have max order
+    df["City"]=df['Purchase Address'].str.split(",").str[1]
+    df.groupby("City")[ 'Quantity Ordered'].sum().plot(kind="bar")
+    df.groupby("City")[ 'Quantity Ordered'].sum().plot(kind="pie", autopct="%1.1f%%")
