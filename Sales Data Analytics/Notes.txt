@@ -86,3 +86,9 @@ frequencu count
     ax1.set_ylabel("Quantity Ordered",color="g")
     ax1.set_xticklabels(products,rotation=90)
     ax2.set_ylabel("Price Each",color="b")
+
+#Monthly trend for best seller product
+most_sold=df["Product"].value_counts()[0:5].index
+most_sold_df=df[df["Product"].isin(most_sold)]
+pivot=most_sold_df.groupby(["Month","Product"]).size().unstack()
+pivot.plot()
