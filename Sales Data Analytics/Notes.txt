@@ -92,3 +92,8 @@ most_sold=df["Product"].value_counts()[0:5].index
 most_sold_df=df[df["Product"].isin(most_sold)]
 pivot=most_sold_df.groupby(["Month","Product"]).size().unstack()
 pivot.plot()
+
+#Most sold product
+df_duplicated=df[df["Order ID"].duplicated(keep=False)]
+dup_df=df_duplicated.groupby("Order ID")["Product"].apply(lambda x:','.join(x)).reset_index().rename(columns={"Product":"Grouped_Products"})
+dup_data=df_duplicated.merge(dup_df,how='left')
