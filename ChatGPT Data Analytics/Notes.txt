@@ -1,0 +1,15 @@
+
+data collection:-
+    https://huggingface.co/
+    https://huggingface.co/datasets/vicgalle/alpaca-gpt4?library=pandas
+
+diff between .csv and .parquet
+.csv->store in row wise tablular
+.parquet ->store in column wise in columnar format i.e name ->['a','ac','ass'] age->[2,3,5]
+
+To read parquet
+!pip install pyarrow==15.0.2
+
+
+thonte.shila@gmail.com
+pss-shilaT123456
